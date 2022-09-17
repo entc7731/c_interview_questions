@@ -1,40 +1,32 @@
-// Online C compiler to run C program online
+// Min and max value in an array
+// Pointer is used for taking 2 outputs (minimum and maximum value)
+
 #include <stdio.h>
 
+void minmaxARRAY(int* ptr, int size, int *min, int *max);
+
 int main() {
-    // Pointer Arithmetic
-    int num = 30;
-    int arr[3] = { 0,5,6 };
-    int* p;
-    double* q;
+    int arr[] = {6,7,9,37,4,8,7,12,-1};
+    int min_value = 0;
+    int max_value = 0;
 
-    printf("\nnum (in 'd' format specifier) = %d", num);
-    printf("\nnum (in 'p' format specifier) = %p", num);
-    printf("\n");
-
-    p = &num;
-
-    printf("\nnum addr (in 'd' format specifier) = %d", p);
-    printf("\nnum addr (in 'p' format specifier) = %p", p);
-    printf("\n");
-
-    printf("\nsize of addition of 2 integers = %d", sizeof(num + num));
-    printf("\nsize of addition of 2 sizeof = %d", (sizeof(num) + sizeof(num)));
-    printf("\n");
-
-    // Here it is treated as integer, thus 4.
-    printf("\nsize of character = %d", sizeof('a'));
-    printf("\nsize of string= %d", sizeof("a"));
-    printf("\n");
-
-    printf("\nsize of array= %d", sizeof(arr));
-    printf("\n");
-
-    p = arr;
-    printf("\nsize of int pointer = %d", sizeof(p)); // 4 in 32 bit environment, 8 in 64 bit env.
-    printf("\nsize of double pointer = %d", sizeof(q));
-    printf("\n");
+    minmaxARRAY(arr, (sizeof(arr) / sizeof(int)), &min_value, &max_value);
+    printf("\n Minimum value in an array = %d", min_value);
+    printf("\n Maximum value in an array = %d", max_value);
 
     return 0;
+}
 
+void minmaxARRAY(int* ptr, int size, int *min, int *max)
+{
+    *min = ptr[0];
+    *max = ptr[0];
+
+    for (int count = 1; count < size; count++)
+    {
+        if (*min > ptr[count])
+            *min = ptr[count];
+        if (*max < ptr[count])
+            *max = ptr[count];
+    }
 }
