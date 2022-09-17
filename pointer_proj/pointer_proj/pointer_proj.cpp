@@ -1,40 +1,29 @@
-// Online C compiler to run C program online
+// Max value in an array
+
 #include <stdio.h>
 
+int findMAX(int* ptr, int size);
+
 int main() {
-    // Pointer Arithmetic
-    int num = 30;
-    int arr[3] = { 0,5,6 };
-    int* p;
-    double* q;
+    int arr[] = { 156,7,89,3,4598};
+    int max_val = 0;
 
-    printf("\nnum (in 'd' format specifier) = %d", num);
-    printf("\nnum (in 'p' format specifier) = %p", num);
-    printf("\n");
-
-    p = &num;
-
-    printf("\nnum addr (in 'd' format specifier) = %d", p);
-    printf("\nnum addr (in 'p' format specifier) = %p", p);
-    printf("\n");
-
-    printf("\nsize of addition of 2 integers = %d", sizeof(num + num));
-    printf("\nsize of addition of 2 sizeof = %d", (sizeof(num) + sizeof(num)));
-    printf("\n");
-
-    // Here it is treated as integer, thus 4.
-    printf("\nsize of character = %d", sizeof('a'));
-    printf("\nsize of string= %d", sizeof("a"));
-    printf("\n");
-
-    printf("\nsize of array= %d", sizeof(arr));
-    printf("\n");
-
-    p = arr;
-    printf("\nsize of int pointer = %d", sizeof(p)); // 4 in 32 bit environment, 8 in 64 bit env.
-    printf("\nsize of double pointer = %d", sizeof(q));
-    printf("\n");
+    max_val = findMAX(arr, (sizeof(arr) / sizeof(int)));
+    printf("\n Max value in an array = %d", max_val);
 
     return 0;
+}
 
+int findMAX(int* ptr, int size)
+{
+    int temp = 0;
+    int max_val_loc = ptr[0];
+
+        for (int count = 1; count < size; count++)
+        {
+            if (max_val_loc < ptr[count])
+                max_val_loc = ptr[count];
+        }
+
+    return max_val_loc;
 }
