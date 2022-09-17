@@ -1,40 +1,30 @@
-// Online C compiler to run C program online
+// Max value in an array
+
 #include <stdio.h>
 
+float averageARRAY(int* ptr, int size);
+
 int main() {
-    // Pointer Arithmetic
-    int num = 30;
-    int arr[3] = { 0,5,6 };
-    int* p;
-    double* q;
+    int arr[] = {6,7,9,3,4};
+    float avg_val = 0;
 
-    printf("\nnum (in 'd' format specifier) = %d", num);
-    printf("\nnum (in 'p' format specifier) = %p", num);
-    printf("\n");
-
-    p = &num;
-
-    printf("\nnum addr (in 'd' format specifier) = %d", p);
-    printf("\nnum addr (in 'p' format specifier) = %p", p);
-    printf("\n");
-
-    printf("\nsize of addition of 2 integers = %d", sizeof(num + num));
-    printf("\nsize of addition of 2 sizeof = %d", (sizeof(num) + sizeof(num)));
-    printf("\n");
-
-    // Here it is treated as integer, thus 4.
-    printf("\nsize of character = %d", sizeof('a'));
-    printf("\nsize of string= %d", sizeof("a"));
-    printf("\n");
-
-    printf("\nsize of array= %d", sizeof(arr));
-    printf("\n");
-
-    p = arr;
-    printf("\nsize of int pointer = %d", sizeof(p)); // 4 in 32 bit environment, 8 in 64 bit env.
-    printf("\nsize of double pointer = %d", sizeof(q));
-    printf("\n");
+    avg_val = averageARRAY(arr, (sizeof(arr) / sizeof(int)));
+    printf("\n Average value of an array = %f", avg_val);
 
     return 0;
+}
 
+float averageARRAY(int* ptr, int size)
+{
+    float sum = 0;
+    float average = 0;
+
+    for (int count = 0; count < size; count++)
+    {
+        sum = sum + (float)ptr[count];
+    }
+
+    average = (float)(sum/size);
+
+    return average;
 }
