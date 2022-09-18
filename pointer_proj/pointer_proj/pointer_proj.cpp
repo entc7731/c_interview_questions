@@ -1,40 +1,28 @@
-// Online C compiler to run C program online
+// Good Neighbour Program
+
 #include <stdio.h>
 
+int IsGoodNeighbourPresent(int* arr, int size);
+
 int main() {
-    // Pointer Arithmetic
-    int num = 30;
-    int arr[3] = { 0,5,6 };
-    int* p;
-    double* q;
+    int arr[] = {3, 6, 2, 8, 19, 11, 89, 7, 13, 5, 7, 9, 23};
+    int GoodNeighbourFlag = 0;
 
-    printf("\nnum (in 'd' format specifier) = %d", num);
-    printf("\nnum (in 'p' format specifier) = %p", num);
-    printf("\n");
+    GoodNeighbourFlag = IsGoodNeighbourPresent( arr, sizeof(arr)/sizeof(int));
 
-    p = &num;
-
-    printf("\nnum addr (in 'd' format specifier) = %d", p);
-    printf("\nnum addr (in 'p' format specifier) = %p", p);
-    printf("\n");
-
-    printf("\nsize of addition of 2 integers = %d", sizeof(num + num));
-    printf("\nsize of addition of 2 sizeof = %d", (sizeof(num) + sizeof(num)));
-    printf("\n");
-
-    // Here it is treated as integer, thus 4.
-    printf("\nsize of character = %d", sizeof('a'));
-    printf("\nsize of string= %d", sizeof("a"));
-    printf("\n");
-
-    printf("\nsize of array= %d", sizeof(arr));
-    printf("\n");
-
-    p = arr;
-    printf("\nsize of int pointer = %d", sizeof(p)); // 4 in 32 bit environment, 8 in 64 bit env.
-    printf("\nsize of double pointer = %d", sizeof(q));
-    printf("\n");
-
+    if (GoodNeighbourFlag)
+        printf("\n There is good neighbour present in the array.");
+    else
+        printf("\n There is no any good neighbour present in the array.");
     return 0;
 
+}
+int IsGoodNeighbourPresent(int* arr, int size)
+{
+    for (int count = 1; count < (size - 1); count++)
+    {
+        if (arr[count] == (arr[count - 1] + arr[count + 1]))
+            return 1;
+    }
+    return 0;
 }
