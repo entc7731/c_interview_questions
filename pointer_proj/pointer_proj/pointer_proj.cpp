@@ -1,40 +1,41 @@
-// Online C compiler to run C program online
+// Program to reverse an array
+
 #include <stdio.h>
 
-int main() {
-    // Pointer Arithmetic
-    int num = 30;
-    int arr[3] = { 0,5,6 };
-    int* p;
-    double* q;
+void reverse_array(int* arr, int size);
+void swap_array_element(int* num1, int* num2);
 
-    printf("\nnum (in 'd' format specifier) = %d", num);
-    printf("\nnum (in 'p' format specifier) = %p", num);
-    printf("\n");
+int main() 
+{
 
-    p = &num;
+    int arr1[] = { 1,2,3,4,5,6,7,8,9 };
+    int arr2[] = { 1,2,3,4,5,6,7,8 };
 
-    printf("\nnum addr (in 'd' format specifier) = %d", p);
-    printf("\nnum addr (in 'p' format specifier) = %p", p);
-    printf("\n");
+    printf("\n Original Array is : \n ");
 
-    printf("\nsize of addition of 2 integers = %d", sizeof(num + num));
-    printf("\nsize of addition of 2 sizeof = %d", (sizeof(num) + sizeof(num)));
-    printf("\n");
+    for(int count = 0; count < (sizeof(arr1) / sizeof(int)); count++)
+        printf("%d ", arr1[count]);
 
-    // Here it is treated as integer, thus 4.
-    printf("\nsize of character = %d", sizeof('a'));
-    printf("\nsize of string= %d", sizeof("a"));
-    printf("\n");
+    reverse_array(arr1, (sizeof(arr1) / sizeof(int)));
 
-    printf("\nsize of array= %d", sizeof(arr));
-    printf("\n");
-
-    p = arr;
-    printf("\nsize of int pointer = %d", sizeof(p)); // 4 in 32 bit environment, 8 in 64 bit env.
-    printf("\nsize of double pointer = %d", sizeof(q));
-    printf("\n");
+    printf("\n Reversed Array is : \n ");
+    for (int count = 0; count < (sizeof(arr1) / sizeof(int)); count++)
+        printf("%d ", arr1[count]);
 
     return 0;
 
+}
+
+void reverse_array(int* arr, int size)
+{
+    for (int count = 0; count < (size / 2); count++)
+        swap_array_element(&arr[count], &arr[size - 1 - count]);
+}
+
+void swap_array_element(int *num1, int *num2)
+{
+    int temp = 0;
+    temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
 }
